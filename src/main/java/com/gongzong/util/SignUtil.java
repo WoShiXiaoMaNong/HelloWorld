@@ -3,6 +3,9 @@ package com.gongzong.util;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+
+//Copy from Baidu
+
 public class SignUtil {
     // 与接口配置信息中的Token要一致
     private static final String TOKEN = PropertiesUtil.getToken();

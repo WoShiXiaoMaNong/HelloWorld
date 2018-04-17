@@ -22,9 +22,7 @@ import com.gongzong.util.XmlUtil;
 public class testController {
 	private Logger logger = Logger.getLogger(testController.class);
 	private static final String TIMESTAMP = "timestamp";
-
     private static final String ECHOSTR = "echostr";
-
     private static final String NONCE = "nonce";
     private static final String SIGNATURE = "signature";
     
