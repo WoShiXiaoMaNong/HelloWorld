@@ -59,7 +59,7 @@ public class testController {
 
 
 	
-	public void responseGet(String echostr,HttpServletResponse response) {
+	private void responseGet(String echostr,HttpServletResponse response) {
 		 PrintWriter out = null;
 		try {
 			out = response.getWriter();
