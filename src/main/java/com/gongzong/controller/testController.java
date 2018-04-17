@@ -2,6 +2,7 @@ package com.gongzong.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gongzong.bean.MessageFactory;
 import com.gongzong.bean.WechatMessage;
+import com.gongzong.common.JDBCUtil;
 import com.gongzong.handler.MessageHandler;
 import com.gongzong.handler.MessageHandlerFactory;
 import com.gongzong.util.SignUtil;
@@ -20,6 +22,7 @@ import com.gongzong.util.XmlUtil;
 
 @Controller
 public class testController {
+	
 	private Logger logger = Logger.getLogger(testController.class);
 	private static final String TIMESTAMP = "timestamp";
     private static final String ECHOSTR = "echostr";
@@ -33,6 +36,8 @@ public class testController {
         String nonce = request.getParameter(NONCE);
         String echostr = request.getParameter(ECHOSTR);
 		String method = request.getMethod();
+		Connection conn = JDBCUtil.getCon();
+		
 		if(!checkcalidata( signature, timestamp, nonce)) {
 			logger.warn("validate error! please check!");
 			return;
