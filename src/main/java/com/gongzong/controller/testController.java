@@ -37,18 +37,16 @@ public class testController {
         String echostr = request.getParameter(ECHOSTR);
 		String method = request.getMethod();
 	
-		if(!checkcalidata( signature, timestamp, nonce)) {
+		if(!SignUtil.checkSignature(signature, timestamp, nonce)) {
 			logger.warn("validate error! please check!");
 			return;
 		}
 		if("get".equalsIgnoreCase(method)) {
-			if (SignUtil.checkSignature(signature, timestamp, nonce)) {
-				responseGet(echostr, response);
-			}
+			responseGet(echostr, response);
 		} else if ("post".equalsIgnoreCase(method)) {
-			logger.info("Start to reciver xml from request...");
+			logger.info("Start to recive xml from request...");
 			String xml = XmlUtil.getXmlFromRequest(request);
-			logger.info("Reciver xml from request end");
+			logger.info("Recive xml from request end");
 			WechatMessage message = MessageFactory.buildMessageBean(xml);
 			MessageHandler handler = MessageHandlerFactory.buildHandler(message);
 			handler.execute(message, request, response);
@@ -59,12 +57,6 @@ public class testController {
 	}
 	        
 
-	
-	
-	private boolean checkcalidata(String signature,String timestamp,String nonce) {
-		
-		return SignUtil.checkSignature(signature, timestamp, nonce);
-	}
 
 	
 	public void responseGet(String echostr,HttpServletResponse response) {

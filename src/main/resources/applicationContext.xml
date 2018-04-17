@@ -36,7 +36,6 @@
         <property name="url" value="${jdbc.url}" />
         <property name="username" value="${jdbc.username}" />
         <property name="password" value="${jdbc.password}" />
- 
         <property name="initialSize" value="3" />  
    		<!-- 最小空闲值.当空闲的连接数少于阀值时，连接池就会预申请去一些连接，以免洪峰来时来不及申请  默认值是0 -->  
     	<property name="minIdle" value="3" />  
