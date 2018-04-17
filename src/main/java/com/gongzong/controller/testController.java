@@ -36,8 +36,7 @@ public class testController {
         String nonce = request.getParameter(NONCE);
         String echostr = request.getParameter(ECHOSTR);
 		String method = request.getMethod();
-		Connection conn = JDBCUtil.getCon();
-		
+	
 		if(!checkcalidata( signature, timestamp, nonce)) {
 			logger.warn("validate error! please check!");
 			return;
