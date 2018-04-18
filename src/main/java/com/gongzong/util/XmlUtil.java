@@ -18,7 +18,7 @@ public class XmlUtil {
 		BufferedReader br = null;
 		try {
 			request.setCharacterEncoding(PropertiesUtil.getCharSet());
-			 br = request.getReader();
+			br = request.getReader();
 			String line = br.readLine();
 			while(!StringUtils.isEmpty(line)) {
 				xml.append(line);

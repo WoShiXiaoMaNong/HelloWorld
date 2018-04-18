@@ -3,6 +3,15 @@ package com.gongzong.bean;
 import org.dom4j.Element;
 
 public class ImageMessage extends WechatMessage {
+	public static String BASE_XML_IMAGE = "<xml> "
+			+ "<ToUserName><![CDATA[%s]]></ToUserName> "
+			+ "<FromUserName><![CDATA[%s]]></FromUserName> "
+			+ "<CreateTime>%s</CreateTime>"
+			+ " <MsgType><![CDATA[image]]></MsgType> "
+			+ "<Image>"
+			+ "<MediaId><![CDATA[%s]]></MediaId>"
+			+ "</Image>"
+			+ "</xml>";
 	private String PicUrl;
 	private String MediaId;
 	private String msgId;
@@ -19,7 +28,7 @@ public class ImageMessage extends WechatMessage {
 	}
 	@Override
 	public String convertToXml() {
-		return String.format(MessageFactory.BASE_XML_IMAGE, 
+		return String.format(BASE_XML_IMAGE, 
 				this.getToUserName(), 
 				this.getFromUserName(), 
 				this.getCreateTime(), 

@@ -8,7 +8,13 @@ import org.dom4j.Element;
 
 public class TextMessage extends WechatMessage{
 	private static final Logger logger = Logger.getLogger(TextMessage.class);
-	
+	public static String BASE_XML_TEXT = "<xml> "
+			+ "<ToUserName><![CDATA[%s]]></ToUserName> "
+			+ "<FromUserName><![CDATA[%s]]></FromUserName> "
+			+ "<CreateTime>%s</CreateTime>"
+			+ " <MsgType><![CDATA[text]]></MsgType> "
+			+ "<Content><![CDATA[%s]]></Content> "
+			+ "</xml>";
 	
 	public TextMessage() {
 	}
@@ -18,7 +24,7 @@ public class TextMessage extends WechatMessage{
 	
 	@Override
 	public String convertToXml() {
-		return String.format(MessageFactory.BASE_XML_TEXT, 
+		return String.format(BASE_XML_TEXT, 
 				this.getToUserName(), 
 				this.getFromUserName(),  
 				this.getCreateTime(),  

@@ -17,13 +17,7 @@ public class MessageFactory {
 			+ "<MediaId><![CDATA[%s]]></MediaId>"
 			+ "</Image>"
 			+ "</xml>";
-	public static String BASE_XML_TEXT = "<xml> "
-			+ "<ToUserName><![CDATA[%s]]></ToUserName> "
-			+ "<FromUserName><![CDATA[%s]]></FromUserName> "
-			+ "<CreateTime>%s</CreateTime>"
-			+ " <MsgType><![CDATA[text]]></MsgType> "
-			+ "<Content><![CDATA[%s]]></Content> "
-			+ "</xml>";
+	
 	
 	public static WechatMessage buildMessageBean(String xml ) {
 		WechatMessage message = WechatMessage.EMPTY_MESSAGE;
@@ -45,6 +39,8 @@ public class MessageFactory {
 		logger.info("Start to convert message.");
 		Element elementMsgType = root.element("MsgType");
 		logger.info("message type is " + elementMsgType.getText());
+		
+		//*************暂时先用if 判断实现。后期修改成配置文件。
 		if(WechatMessage.MESSAGE_TYPE_TEXT.equals(elementMsgType.getText())) {
 			message = new TextMessage(root);
 		}else if(WechatMessage.MESSAGE_TYPE_IMAGE.equals(elementMsgType.getText())) {
