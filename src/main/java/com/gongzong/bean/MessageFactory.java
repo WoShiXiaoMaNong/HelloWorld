@@ -8,15 +8,7 @@ import org.dom4j.Element;
 
 public class MessageFactory {
 	private static final Logger logger = Logger.getLogger(MessageFactory.class);
-	public static String BASE_XML_IMAGE = "<xml> "
-			+ "<ToUserName><![CDATA[%s]]></ToUserName> "
-			+ "<FromUserName><![CDATA[%s]]></FromUserName> "
-			+ "<CreateTime>%s</CreateTime>"
-			+ " <MsgType><![CDATA[image]]></MsgType> "
-			+ "<Image>"
-			+ "<MediaId><![CDATA[%s]]></MediaId>"
-			+ "</Image>"
-			+ "</xml>";
+	
 	
 	
 	public static WechatMessage buildMessageBean(String xml ) {
