@@ -40,8 +40,8 @@ public class ImageMessageHandler implements MessageHandler {
 	}
 	
 	
-	private void responese(HttpServletRequest request, HttpServletResponse response,WechatMessage resMsg) {
-		String result = resMsg.convertToXml();
+	private void responese(HttpServletRequest request, HttpServletResponse response,WechatMessage responseMsg) {
+		String result = responseMsg.convertToXml();
 		logger.info("Strat to responese. xml : " + result);
 		PrintWriter pw = null;
 		String charSet = response.getCharacterEncoding();
@@ -51,7 +51,7 @@ public class ImageMessageHandler implements MessageHandler {
 			pw.println(result);
 			pw.flush();
 		} catch (IOException e) {
-			logger.error(e.getMessage() + " \r\n error when writer resMsg in to httpServletResponse." + resMsg);
+			logger.error(e.getMessage() + " \r\n error when responese ImageMessage." + responseMsg);
 		}finally {
 			response.setCharacterEncoding(charSet);
 			if(pw != null) {
